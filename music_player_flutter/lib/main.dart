@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'HomePage.dart';
 import 'MusicPlayer.dart';
 
 void main() {
@@ -15,9 +16,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/MusicPlayer',
+      initialRoute: '/HomePage',
       routes: {
-        '/MusicPlayer': (context) => MusicPlayer() 
+        '/MusicPlayer': (context) => MusicPlayer(),
+        '/HomePage': (context) => HomePage(), 
       },
     );
   }

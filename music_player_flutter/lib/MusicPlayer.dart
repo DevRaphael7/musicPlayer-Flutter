@@ -1,5 +1,5 @@
-import 'package:audioplayers/audio_cache.dart';
-import 'package:audioplayers/audioplayers.dart';
+// import 'package:audioplayers/audio_cache.dart';
+// import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player_flutter/class/Music.dart';
 
@@ -15,10 +15,10 @@ class MusicPlayerState extends State<MusicPlayer>{
   Music musicas = new Music();
   IconData iconeMusica = Icons.play_arrow;
 
-  AudioPlayer _player;
-  AudioCache cache;
-
   String path = "assets/Howls Moving Castle.mp3";
+
+  // AudioPlayer player;
+  // AudioCache cache;
 
   Duration position = new Duration();
   Duration musicLength = new Duration();
@@ -42,10 +42,12 @@ class MusicPlayerState extends State<MusicPlayer>{
   //   _player.seek(newPos);
   // }
 
+
   @override 
   Widget build(BuildContext context){
 
-    cache = new AudioCache(fixedPlayer: _player);
+    // cache = new AudioCache(fixedPlayer: player);
+    // cache.load(path);
 
     return Container(
       alignment: Alignment.topLeft,
@@ -138,9 +140,10 @@ class MusicPlayerState extends State<MusicPlayer>{
                       hoverColor: Color(0xff171b4b),
                       backgroundColor: Colors.black.withOpacity(0.3),
                       onPressed: (){
-                        cache.play('Howls Moving Castle.mp3');
+                        
                         setState((){
                           if(musicas.rodarMusica()){
+                            // cache.play(path);
                             musicas.iconeButton();
                           }
                         });
