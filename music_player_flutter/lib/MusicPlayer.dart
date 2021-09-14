@@ -1,3 +1,5 @@
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player_flutter/class/Music.dart';
 
@@ -9,12 +11,41 @@ class MusicPlayer extends StatefulWidget{
 
 class MusicPlayerState extends State<MusicPlayer>{
 
+  
   Music musicas = new Music();
   IconData iconeMusica = Icons.play_arrow;
 
-  @override 
+  AudioPlayer _player;
+  AudioCache cache;
 
+  String path = "assets/Howls Moving Castle.mp3";
+
+  Duration position = new Duration();
+  Duration musicLength = new Duration();
+
+  // Widget slider() {
+  //   return Container(
+  //     width: 300.0,
+  //     child: Slider.adaptive(
+  //         activeColor: Colors.blue[800],
+  //         inactiveColor: Colors.grey[350],
+  //         value: position.inSeconds.toDouble(),
+  //         max: musicLength.inSeconds.toDouble(),
+  //         onChanged: (value) {
+  //           seekToSec(value.toInt());
+  //         }),
+  //   );
+  // }
+
+  // void seekToSec(int sec) {
+  //   Duration newPos = Duration(seconds: sec);
+  //   _player.seek(newPos);
+  // }
+
+  @override 
   Widget build(BuildContext context){
+
+    cache = new AudioCache(fixedPlayer: _player);
 
     return Container(
       alignment: Alignment.topLeft,
@@ -80,6 +111,9 @@ class MusicPlayerState extends State<MusicPlayer>{
             ),
           ),
           Padding(padding: EdgeInsets.only(top: 20.0),),
+          
+          
+        
           Expanded(
             child: Container(
               decoration: BoxDecoration(
@@ -104,6 +138,7 @@ class MusicPlayerState extends State<MusicPlayer>{
                       hoverColor: Color(0xff171b4b),
                       backgroundColor: Colors.black.withOpacity(0.3),
                       onPressed: (){
+                        cache.play('Howls Moving Castle.mp3');
                         setState((){
                           if(musicas.rodarMusica()){
                             musicas.iconeButton();

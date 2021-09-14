@@ -1,4 +1,6 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:music_player_flutter/widgets/Slider.dart';
 
 class Music{
   
