@@ -13,42 +13,10 @@ class MusicPlayerState extends State<MusicPlayer>{
 
   
   Music musicas = new Music();
-  IconData iconeMusica = Icons.play_arrow;
-
-  String path = "assets/Howls Moving Castle.mp3";
-
-  // AudioPlayer player;
-  // AudioCache cache;
-
-  Duration position = new Duration();
-  Duration musicLength = new Duration();
-
-  // Widget slider() {
-  //   return Container(
-  //     width: 300.0,
-  //     child: Slider.adaptive(
-  //         activeColor: Colors.blue[800],
-  //         inactiveColor: Colors.grey[350],
-  //         value: position.inSeconds.toDouble(),
-  //         max: musicLength.inSeconds.toDouble(),
-  //         onChanged: (value) {
-  //           seekToSec(value.toInt());
-  //         }),
-  //   );
-  // }
-
-  // void seekToSec(int sec) {
-  //   Duration newPos = Duration(seconds: sec);
-  //   _player.seek(newPos);
-  // }
-
 
   @override 
   Widget build(BuildContext context){
-
-    // cache = new AudioCache(fixedPlayer: player);
-    // cache.load(path);
-
+    
     return Container(
       alignment: Alignment.topLeft,
       decoration: BoxDecoration(

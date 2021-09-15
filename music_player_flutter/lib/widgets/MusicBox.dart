@@ -1,70 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:music_player_flutter/components/Functions.dart';
 
 class MusicBox extends StatelessWidget{
 
   String nome;
   String artista;
   String asset;
+  String rota;
+  int indice;
 
   @override
   Widget build(BuildContext context){
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Column(
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MaterialButton(
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: ClipRRect(
+            child: ClipRRect(
                 child: Container(
-                  height: 120,
-                  width: 120,
+                  height: 100,
+                  width: 100,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20.0),
-                      topRight: Radius.circular(20.0)
-                    ),
+                    borderRadius: BorderRadius.circular(20),
                     image: DecorationImage(
                       image: AssetImage(asset)
                     )
                   )
                 ),
               ),
+              onPressed: () {
+                passarParaOutraTela(context, rota, indice);
+              },
             ),
+          Padding(padding: EdgeInsets.only(top: 10)),
+          Text(
+            nome,
+            style: TextStyle(
+              fontSize: 12.0,
+              color: Colors.white,
+              decoration: TextDecoration.none,
+            )
           ),
           Padding(padding: EdgeInsets.only(top: 10)),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              nome,
-              style: TextStyle(
-                fontSize: 15.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                decoration: TextDecoration.none,
+          Text(
+            artista,
+            style: TextStyle(
+              fontSize: 12.0,
+              color: Colors.white,
+              decoration: TextDecoration.none,
             )
-          ),
-          ),
-          Padding(padding: EdgeInsets.only(top: 2)),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              artista,
-              style: TextStyle(
-                fontSize: 8.0,
-                color: Colors.white,
-                decoration: TextDecoration.none,
-            )
-          ),
           ),
         ],
-      ),
-    );
+      );
   }
 
-  MusicBox(String nome, String artista, String asset){
+  MusicBox(String nome, String artista, String asset, int indice){
     this.nome = nome;
     this.artista = artista;
     this.asset = asset;
+    this.rota = "/MusicPlayer";
+    this.indice = indice;
   }
 }
