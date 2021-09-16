@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:music_player_flutter/components/Functions.dart';
+import 'package:music_player_flutter/components/Functions.dart' as function;
 
 class MusicBox extends StatelessWidget{
 
   String nome;
   String artista;
   String asset;
-  String rota;
   int indice;
 
   @override
@@ -28,7 +27,7 @@ class MusicBox extends StatelessWidget{
                 ),
               ),
               onPressed: () {
-                passarParaOutraTela(context, rota, indice);
+                function.passarParaOutraTela(context, "/MusicPlayer", indice);
               },
             ),
           Padding(padding: EdgeInsets.only(top: 10)),
@@ -57,7 +56,6 @@ class MusicBox extends StatelessWidget{
     this.nome = nome;
     this.artista = artista;
     this.asset = asset;
-    this.rota = "/MusicPlayer";
     this.indice = indice;
   }
 }

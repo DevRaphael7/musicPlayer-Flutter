@@ -1,7 +1,6 @@
-// import 'package:audioplayers/audio_cache.dart';
-// import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player_flutter/class/Music.dart';
+import 'components/Musicas.dart';
 
 class MusicPlayer extends StatefulWidget{
 
@@ -12,11 +11,16 @@ class MusicPlayer extends StatefulWidget{
 class MusicPlayerState extends State<MusicPlayer>{
 
   
-  Music musicas = new Music();
+  Music musica = new Music();
 
   @override 
   Widget build(BuildContext context){
-    
+
+    Map data = ModalRoute.of(context).settings.arguments;
+
+    int indice = data["indice"];
+    musica.atribuirValor(musicas, indice);
+
     return Container(
       alignment: Alignment.topLeft,
       decoration: BoxDecoration(
@@ -24,8 +28,10 @@ class MusicPlayerState extends State<MusicPlayer>{
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [ 
-            Color(0xff171b4b),
-            Color(0xff760ed0),
+            Color(0xff262526),
+            Color(0xff262526)
+            // Color(0xff171b4b),
+            // Color(0xff760ed0),
             // Color(0xff274a75)
             // Color(0xffeb0a3d)
           ]
@@ -33,6 +39,7 @@ class MusicPlayerState extends State<MusicPlayer>{
       ),
       child: Column(
         children: [
+          Padding(padding: EdgeInsets.only(top: 10.0)),
           Align(
             alignment: Alignment.bottomLeft,
             child: Padding(
@@ -40,9 +47,9 @@ class MusicPlayerState extends State<MusicPlayer>{
                 top: 20,
                 left: 10),
               child: Text(
-                "Howl's Moving Castle",
+                musica.nome,
                 style: TextStyle(
-                  fontSize: 25.0,
+                  fontSize: 30.0,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   decoration: TextDecoration.none
@@ -57,9 +64,9 @@ class MusicPlayerState extends State<MusicPlayer>{
                 top: 5,
                 left: 10),
               child: Text(
-                "Joe Hisaishi",
+                musica.artista,
                 style: TextStyle(
-                  fontSize: 12.0,
+                  fontSize: 15.0,
                   decoration: TextDecoration.none,
                   color: Colors.white,
                   fontWeight: FontWeight.w100
@@ -75,7 +82,7 @@ class MusicPlayerState extends State<MusicPlayer>{
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(200),
                 image: DecorationImage(
-                  image: AssetImage("assets/HOWL.png"),
+                  image: AssetImage(musica.picture),
                 )
               ),
             ),
@@ -85,15 +92,7 @@ class MusicPlayerState extends State<MusicPlayer>{
           
         
           Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.4),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30.0),
-                  topRight: Radius.circular(30.0)
-                )
-              ),
-              child: Row(
+            child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     FloatingActionButton(
@@ -110,14 +109,14 @@ class MusicPlayerState extends State<MusicPlayer>{
                       onPressed: (){
                         
                         setState((){
-                          if(musicas.rodarMusica()){
+                          if(musica.rodarMusica()){
                             // cache.play(path);
-                            musicas.iconeButton();
+                            musica.iconeButton();
                           }
                         });
                       },
                       child: Icon(
-                        musicas.iconeButton(),
+                        musica.iconeButton(),
                       ),
                     ),
                     FloatingActionButton(
@@ -130,9 +129,7 @@ class MusicPlayerState extends State<MusicPlayer>{
                     ),
                   ],
                 )
-              
             ),
-          )
         ],
       ),
     );
