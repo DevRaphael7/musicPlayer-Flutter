@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'HomePage.dart';
 import 'MusicPlayer.dart';
 
-void main() {
+void main(){
   runApp(MyApp());
 }
 
