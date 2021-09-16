@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_player_flutter/widgets/MusicBox.dart';
+import 'package:music_player_flutter/widgets/Text.dart';
 import 'components/Musicas.dart';
 
 class HomePage extends StatelessWidget{
@@ -20,10 +21,6 @@ class HomePage extends StatelessWidget{
               colors: [ 
                 Color(0xff262526),
                 Color(0xff262526)
-                // Color(0xff171b4b),
-                // Color(0xff760ed0),
-                // Color(0xff274a75)
-                // Color(0xffeb0a3d)
               ]
             )
           ),
@@ -32,18 +29,9 @@ class HomePage extends StatelessWidget{
               Padding(padding: EdgeInsets.only(top: 10.0)),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  "Recomendadas para você",
-                  style: TextStyle(
-                    fontSize: 22.0,
-                    decoration: TextDecoration.none,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
+                child: TextForHomePage("Recomendadas para você")
               ),
               Padding(padding: EdgeInsets.only(top: 10.0)),
-              
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -62,15 +50,7 @@ class HomePage extends StatelessWidget{
               Padding(padding: EdgeInsets.only(top: 10.0)),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  "Animes",
-                  style: TextStyle(
-                    fontSize: 25.0,
-                    decoration: TextDecoration.none,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
+                child: TextForHomePage("Animes")
               ),
               Padding(padding: EdgeInsets.only(top: 10.0)),
               SingleChildScrollView(
@@ -91,18 +71,9 @@ class HomePage extends StatelessWidget{
               Padding(padding: EdgeInsets.only(top: 10.0)),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  "Animes",
-                  style: TextStyle(
-                    fontSize: 25.0,
-                    decoration: TextDecoration.none,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
+                child: TextForHomePage("Anos 80")
               ),
               Padding(padding: EdgeInsets.only(top: 10.0)),
-              
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -121,18 +92,9 @@ class HomePage extends StatelessWidget{
               Padding(padding: EdgeInsets.only(top: 10.0)),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  "Animes",
-                  style: TextStyle(
-                    fontSize: 25.0,
-                    decoration: TextDecoration.none,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
+                child: TextForHomePage("Populares")
               ),
               Padding(padding: EdgeInsets.only(top: 10.0)),
-              
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
