@@ -7,7 +7,7 @@ class Music{
   String picture;
   bool escutando;
   IconData icone;
-
+  
   bool rodarMusica(){
     return escutando = escutando == true ? false : true;
   }

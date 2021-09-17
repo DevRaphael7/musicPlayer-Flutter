@@ -19,10 +19,6 @@ class MusicPlayerState extends State<MusicPlayer>{
 
   @override 
   Widget build(BuildContext context){
-
-    AudioPlayer _player;
-    AudioCache cache = new AudioCache(fixedPlayer: _player);
-
     Map data = ModalRoute.of(context).settings.arguments;
 
     int indice = data["indice"];
@@ -76,7 +72,6 @@ class MusicPlayerState extends State<MusicPlayer>{
             ),
           ),
           Padding(padding: EdgeInsets.only(top: 40.0),),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
