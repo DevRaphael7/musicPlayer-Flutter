@@ -6,6 +6,12 @@ Map musicas = {
     "Living on a Player",
     "Dark Souls Theme",
     ],
+  'Gênero':[
+    'Anime',
+    'POP',
+    'POP',
+    'Game'
+  ],
   'Artista' : [
     "Joe Hiraishi", 
     "Michael Jackson",

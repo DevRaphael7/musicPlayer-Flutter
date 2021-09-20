@@ -1,54 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:music_player_flutter/widgets/MusicBox.dart';
-import 'package:music_player_flutter/widgets/Text.dart';
-import 'components/Musicas.dart';
+import 'package:music_player_flutter/telas/Buscar.dart';
+import 'package:music_player_flutter/telas/Musics.dart';
+import 'package:music_player_flutter/telas/Playlists.dart';
 
-class HomePage extends StatelessWidget{
+class HomePage extends StatefulWidget{
+
+  @override 
+  State createState() => new HomePageState();
+}
+
+class HomePageState extends State<HomePage>{
+
+  int indexTelas = 2;
+
+  final Telas = [
+    Musics(),
+    Playlists(),
+    Buscar()
+  ];
 
   @override 
   Widget build(BuildContext context){
-    return Container(
-      decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [ 
-                Color(0xff262526),
-                Color(0xff262526)
-              ]
-            )
+    return Scaffold(
+      body: Telas[indexTelas],
+      backgroundColor: Color(0xff262526),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: indexTelas,
+        type: BottomNavigationBarType.shifting,
+        items: [
+          BottomNavigationBarItem(
+            backgroundColor: Color(0xff262526).withOpacity(0.4),
+            icon: Icon(
+              Icons.music_note,
+              color: Colors.white,
+            ),
+            title: Text("Músicas", style: TextStyle(color: Colors.white),)
           ),
-      child: SingleChildScrollView(
-          padding: EdgeInsets.only(
-            top: 25.0,
-            left: 20.0,
-            right: 20.0
+          BottomNavigationBarItem(
+            backgroundColor: Color(0xff262526).withOpacity(0.4),
+            icon: Icon(
+              Icons.list_alt_outlined, 
+              color: Colors.white,
+            ),
+            title: Text("Playlist", style: TextStyle(color: Colors.white),)
           ),
-          child: Column(
-            children: [
-              Padding(padding: EdgeInsets.only(top: 10.0)),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: TextForHomePage("Recomendadas para você")
-              ),
-              Padding(padding: EdgeInsets.only(top: 10.0)),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    MusicBox(musicas['Nome'][0], musicas['Artista'][0], musicas['Asset'][0], musicas['id'][0]),
-                    Padding(padding: EdgeInsets.only(right: 12.0)),
-                    MusicBox(musicas['Nome'][1], musicas['Artista'][1], musicas['Asset'][1], musicas['id'][1]),
-                    Padding(padding: EdgeInsets.only(right: 12.0)),
-                    MusicBox(musicas['Nome'][2], musicas['Artista'][2], musicas['Asset'][2], musicas['id'][2]),
-                    Padding(padding: EdgeInsets.only(right: 12.0)),
-                    MusicBox(musicas['Nome'][3], musicas['Artista'][3], musicas['Asset'][3], musicas['id'][3]),
-                    Padding(padding: EdgeInsets.only(right: 12.0)),
-                  ],
-                ),
-              ),
-            ],
+          BottomNavigationBarItem(
+            backgroundColor: Color(0xff262526).withOpacity(0.4),
+            icon: Icon(
+              Icons.search,
+              color: Colors.white,
+            ),
+            title: Text("Procurar", style: TextStyle(color: Colors.white),)
           ),
+        ],
+        onTap: (index){
+          setState((){
+            indexTelas = index;
+          });
+        },
       ),
     );
   }

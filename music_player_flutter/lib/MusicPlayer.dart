@@ -13,7 +13,6 @@ class MusicPlayer extends StatefulWidget{
 class MusicPlayerState extends State<MusicPlayer>{
   
   Music musica = new Music();
-
   @override 
   Widget build(BuildContext context){
 
