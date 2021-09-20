@@ -1,11 +1,8 @@
-import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player_flutter/class/Music.dart';
 import 'package:music_player_flutter/widgets/Buttons.dart';
 import 'package:music_player_flutter/widgets/Text.dart';
 import 'components/Musicas.dart';
-import 'package:audioplayers/audioplayers.dart';
-
 
 class MusicPlayer extends StatefulWidget{
 
@@ -19,10 +16,10 @@ class MusicPlayerState extends State<MusicPlayer>{
 
   @override 
   Widget build(BuildContext context){
+
     Map data = ModalRoute.of(context).settings.arguments;
 
     int indice = data["indice"];
-    if (indice == null) indice = 1;
     musica.atribuirValor(musicas, indice);
 
     return Container(
@@ -39,7 +36,25 @@ class MusicPlayerState extends State<MusicPlayer>{
       ),
       child: Column(
         children: [
-          Padding(padding: EdgeInsets.only(top: 10.0)),
+          Padding(
+            padding: EdgeInsets.only(
+              top: 5.0,
+            ),
+            child: Align(
+            alignment: Alignment.centerLeft,
+            child: MaterialButton(
+                    textColor: Colors.white,
+                    onPressed: () { 
+                      setState((){
+                        Navigator.of(context).pushNamed("/HomePage");
+                      });
+                    },
+                    child: Icon(
+                      Icons.arrow_back,
+                    )
+                  ),
+                ),
+          ),
           Align(
             alignment: Alignment.bottomLeft,
             child: Padding(
@@ -71,39 +86,9 @@ class MusicPlayerState extends State<MusicPlayer>{
               ),
             ),
           ),
-          Padding(padding: EdgeInsets.only(top: 40.0),),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "0:00",
-                style: TextStyle(
-                  decoration: TextDecoration.none,
-                  fontSize: 15,
-                  color: Colors.white
-                ),
-              ),
-              Padding(padding: EdgeInsets.only(left: 200.0)),
-              Text(
-                "3:50",
-                style: TextStyle(
-                  decoration: TextDecoration.none,
-                  fontSize: 15,
-                  color: Colors.white
-                ),
-              ),
-            ],
-          ),
-          Padding(padding: EdgeInsets.only(top: 20.0)),
-          Center(
-            child: Container(
-              height: 1,
-              width: 300,
-              color: Colors.white,
-            ),
-          ),
+          Padding(padding: EdgeInsets.only(top: 30.0),),
           Expanded(
-            child: ButtonsControllerPlayers(musica),
+            child: ButtonsControllerPlayers(musica, indice),
             ),
         ],
       ),

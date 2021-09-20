@@ -7,6 +7,7 @@ class Music{
   String picture;
   bool escutando;
   IconData icone;
+  String music_name;
   
   bool rodarMusica(){
     return escutando = escutando == true ? false : true;
@@ -20,6 +21,7 @@ class Music{
     this.nome = valores["Nome"][indice];
     this.artista = valores["Artista"][indice];
     this.picture = valores["Asset"][indice];
+    this.music_name = valores['MP3_path'][indice];
   }
   Music(){
     this.escutando = false;

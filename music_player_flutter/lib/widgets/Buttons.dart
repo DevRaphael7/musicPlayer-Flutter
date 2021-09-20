@@ -2,35 +2,35 @@ import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player_flutter/class/Music.dart';
+import 'package:flutter/services.dart';
+import 'package:music_player_flutter/components/Musicas.dart';
 
 class ButtonsControllerPlayers extends StatefulWidget{
 
   Music ms;
+  int ind;
 
   @override 
-  State createState() => new ButtonsControllerPlayersState(ms);
+  State createState() => new ButtonsControllerPlayersState(ms,ind);
 
-  ButtonsControllerPlayers(Music musica){
+  ButtonsControllerPlayers(Music musica, int ind){
     this.ms = musica;
+    this.ind = ind;
   }
 }
 
 class ButtonsControllerPlayersState extends State<ButtonsControllerPlayers>{
 
   Music musica;
-  // AudioCache cache;
-  // AudioPlayer _player;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _player = AudioPlayer();
-  //   cache = AudioCache(fixedPlayer: _player);
-  // }
+  final player = AudioPlayer();
+  static AudioCache cache;
+  int inc;
 
   @override 
   Widget build(BuildContext context){
-    // cache.load("assets/Howls Moving Castle.mp3");
+
+    cache = AudioCache(fixedPlayer: player);
+
     return Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -46,7 +46,14 @@ class ButtonsControllerPlayersState extends State<ButtonsControllerPlayers>{
                 hoverColor: Color(0xff171b4b),
                 backgroundColor: Colors.black.withOpacity(0.3),
                 onPressed: (){
-                  // cache.play("assets/Howls Moving Castle.mp3");
+                  SystemSound.play(SystemSoundType.click);
+
+                  if ( musica.icone == Icons.play_arrow ){
+                    cache.play(musica.music_name);
+                  } else if ( musica.icone == Icons.pause){
+                    player.pause();
+                  }
+
                   setState((){
                     if(musica.rodarMusica()){
                       musica.iconeButton();
@@ -60,7 +67,8 @@ class ButtonsControllerPlayersState extends State<ButtonsControllerPlayers>{
               FloatingActionButton(
                 hoverColor: Color(0xff171b4b),
                 backgroundColor: Colors.black.withOpacity(0.3),
-                onPressed: (){},
+                onPressed: (){
+                },
                 child: Icon(
                   Icons.skip_next,
                 ),
@@ -68,7 +76,8 @@ class ButtonsControllerPlayersState extends State<ButtonsControllerPlayers>{
             ],
           );
   }
-  ButtonsControllerPlayersState(Music musica){
+  ButtonsControllerPlayersState(Music musica, int ind){
     this.musica = musica;
+    this.inc = ind;
   }
 }

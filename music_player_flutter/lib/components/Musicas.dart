@@ -1,15 +1,27 @@
 Map musicas = {
-  'id' : [0, 1],
+  'id' : [0, 1, 2, 3],
   'Nome' : [
     "Howl's Moving Castle", 
-    "Beat It"
+    "Beat It",
+    "Living on a Player",
+    "Dark Souls Theme",
     ],
   'Artista' : [
     "Joe Hiraishi", 
-    "Michael Jackson"
+    "Michael Jackson",
+    "Bon Jovi",
+    "Motoi Sakuraba"
     ],
   'Asset' : [
     "assets/HOWL.png", 
-    "assets/Beat it Cover.jpg"
+    "assets/Beat it Cover.jpg",
+    "assets/Bon Jovi Living on a Player.jpg",
+    "assets/Dark Souls Theme.png"
+    ],
+    'MP3_path' : [
+      'Howls Moving Castle.mp3',
+      'Beat It .mp3',
+      'Livin On A Prayer.mp3',
+      'Great Grey Wolf Sif - Dark Souls Soundtrack.mp3'
     ]
 };
