@@ -29,7 +29,7 @@ class ButtonsControllerPlayersState extends State<ButtonsControllerPlayers>{
   @override 
   Widget build(BuildContext context){
 
-    cache = AudioCache(fixedPlayer: player);
+    cache = new AudioCache(fixedPlayer: player);
 
     return Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

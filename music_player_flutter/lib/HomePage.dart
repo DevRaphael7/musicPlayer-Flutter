@@ -23,13 +23,13 @@ class HomePageState extends State<HomePage>{
   Widget build(BuildContext context){
     return Scaffold(
       body: Telas[indexTelas],
-      backgroundColor: Color(0xff262526),
+      backgroundColor: Color(0xff6633cc),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: indexTelas,
         type: BottomNavigationBarType.shifting,
         items: [
           BottomNavigationBarItem(
-            backgroundColor: Color(0xff262526).withOpacity(0.4),
+            backgroundColor: Color(0xff6633cc),
             icon: Icon(
               Icons.music_note,
               color: Colors.white,
@@ -37,7 +37,7 @@ class HomePageState extends State<HomePage>{
             title: Text("Músicas", style: TextStyle(color: Colors.white),)
           ),
           BottomNavigationBarItem(
-            backgroundColor: Color(0xff262526).withOpacity(0.4),
+            backgroundColor: Color(0xff6633cc),
             icon: Icon(
               Icons.list_alt_outlined, 
               color: Colors.white,
@@ -45,7 +45,7 @@ class HomePageState extends State<HomePage>{
             title: Text("Playlist", style: TextStyle(color: Colors.white),)
           ),
           BottomNavigationBarItem(
-            backgroundColor: Color(0xff262526).withOpacity(0.4),
+            backgroundColor: Color(0xff6633cc),
             icon: Icon(
               Icons.search,
               color: Colors.white,

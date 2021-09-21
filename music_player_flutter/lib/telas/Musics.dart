@@ -13,8 +13,8 @@ class Musics extends StatelessWidget{
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [ 
-                Color(0xff262526),
-                Color(0xff262526)
+                Color(0xff6633cc),
+                Color(0xff5925e5)
               ]
             )
           ),

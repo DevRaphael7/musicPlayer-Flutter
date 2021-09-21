@@ -10,6 +10,7 @@ class Buscar extends StatelessWidget{
   Widget build(BuildContext context){
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
+      physics: ScrollPhysics(),
       child: Container(
         padding: EdgeInsets.all(20.0),
         child: Column(
@@ -33,10 +34,11 @@ class Buscar extends StatelessWidget{
                 ),
               ),
               Padding(padding: EdgeInsets.only(top: 10)),
-              ListView.builder(
+              ListView.separated(
                 shrinkWrap: true,
                 itemCount: generos.length + 1,
                 itemBuilder: (context , int index) => CategoryFilm(Color(0xff531b53), generos['Asset'][index], generos['Genre'][index]),
+                separatorBuilder: (context, _) => Padding(padding: EdgeInsets.only(top: 10)),
               ),
             ],
           )
