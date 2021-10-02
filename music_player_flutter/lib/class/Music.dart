@@ -8,6 +8,7 @@ class Music{
   bool escutando;
   IconData icone;
   String music_name;
+  // List<Map> dicionario;
   
   bool rodarMusica(){
     return escutando = escutando == true ? false : true;

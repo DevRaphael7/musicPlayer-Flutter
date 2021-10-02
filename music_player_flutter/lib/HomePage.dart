@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget{
 
 class HomePageState extends State<HomePage>{
 
-  int indexTelas = 2;
+  int indexTelas = 0;
 
   final Telas = [
     Musics(),

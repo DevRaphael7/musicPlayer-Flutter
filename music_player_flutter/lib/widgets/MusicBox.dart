@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:music_player_flutter/class/Music.dart';
 import 'package:music_player_flutter/components/Functions.dart' as function;
 
 class MusicBox extends StatelessWidget{
 
-  String nome;
-  String artista;
-  String asset;
   int indice;
+  Map dicionario;
+  Music musicas = new Music();
 
   @override
   Widget build(BuildContext context){
+
+    musicas.atribuirValor(dicionario, indice);
+
     return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -21,18 +24,19 @@ class MusicBox extends StatelessWidget{
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     image: DecorationImage(
-                      image: AssetImage(asset)
+                      fit: BoxFit.cover,
+                      image: AssetImage(musicas.picture)
                     )
                   )
                 ),
               ),
               onPressed: () {
-                function.passarParaOutraTela(context, "/MusicPlayer", indice);
+                function.passarParaOutraTela(context, "/MusicPlayer", indice, dicionario);
               },
             ),
           Padding(padding: EdgeInsets.only(top: 10)),
           Text(
-            nome,
+            musicas.nome,
             style: TextStyle(
               fontSize: 12.0,
               color: Colors.white,
@@ -41,7 +45,7 @@ class MusicBox extends StatelessWidget{
           ),
           Padding(padding: EdgeInsets.only(top: 10)),
           Text(
-            artista,
+            musicas.artista,
             style: TextStyle(
               fontSize: 12.0,
               color: Colors.white,
@@ -52,10 +56,8 @@ class MusicBox extends StatelessWidget{
       );
   }
 
-  MusicBox(String nome, String artista, String asset, int indice){
-    this.nome = nome;
-    this.artista = artista;
-    this.asset = asset;
+  MusicBox(Map dict, int indice){
+    this.dicionario = dict;
     this.indice = indice;
   }
 }

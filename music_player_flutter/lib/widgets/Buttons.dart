@@ -3,7 +3,6 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player_flutter/class/Music.dart';
 import 'package:flutter/services.dart';
-import 'package:music_player_flutter/components/Musicas.dart';
 
 class ButtonsControllerPlayers extends StatefulWidget{
 

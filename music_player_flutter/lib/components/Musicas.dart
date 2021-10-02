@@ -31,3 +31,11 @@ Map musicas = {
       'Great Grey Wolf Sif - Dark Souls Soundtrack.mp3'
     ]
 };
+
+Map favoritas = {
+  'Nome' : [],
+  'Gênero': [],
+  'Artista': [],
+  'Asset': [],
+  'MP3_path' : []
+};

@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:music_player_flutter/components/Functions.dart';
 import 'package:music_player_flutter/components/Musicas.dart';
 import 'package:music_player_flutter/widgets/MusicBox.dart';
 import 'package:music_player_flutter/widgets/Text.dart';
 
-class Musics extends StatelessWidget{
+class Musics extends StatefulWidget{
+
+  @override 
+  State createState() => new MusicsState();
+}
+class MusicsState extends State<Musics>{
+
+  IconData iconeTeste = Icons.favorite_border;
+  String nomeBanner = "Joker";
 
   @override 
   Widget build(BuildContext context){
+
+    setState(() {
+      iconeTeste = mudancaDeIcone(iconeTeste, favoritas, nomeBanner);
+    });
+
     return Container(
+      height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
@@ -19,37 +34,97 @@ class Musics extends StatelessWidget{
             )
           ),
       child: SingleChildScrollView(
-          padding: EdgeInsets.only(
-            top: 25.0,
-            left: 20.0,
-            right: 20.0
-          ),
+          padding: EdgeInsets.all(15.0),
           child: Column(
             children: [
-              Padding(padding: EdgeInsets.only(top: 10.0)),
+              Padding(padding: EdgeInsets.only(top: 30.0)),
+              Column(
+                children: [
+                  Container(
+                    width: 500,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20.0),
+                      image: DecorationImage(
+                        image: AssetImage("assets/joker_img.png"),
+                        fit: BoxFit.cover
+                      )
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Align(
+                        alignment: Alignment.bottomRight,
+                        child: Icon(
+                          Icons.play_arrow_rounded,
+                          color: Colors.white,
+                          size: 60.0,
+                        )
+                      )
+                    )
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(nomeBanner, style: TextStyle(color: Colors.white, fontSize: 30)),
+                          Spacer(),
+                          IconButton(
+                            icon: Icon(iconeTeste, size: 40, color: Colors.white),
+                            onPressed: () {
+                              setState(() {
+                                List values = ["Joker", "Quadrinhos", "Gary Glitter", "assets/joker.jpg", "Howls Moving Castle.mp3"];
+                                adicionarAsFavoritas(favoritas, values);
+                              });
+                            },
+                            )
+                        ],
+                      )
+                  ),
+                ]
+              ),
+              Padding(padding: EdgeInsets.only(top: 5.0)),
               Align(
                 alignment: Alignment.centerLeft,
                 child: TextForHomePage("Recomendadas para você")
               ),
               Padding(padding: EdgeInsets.only(top: 10.0)),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    MusicBox(musicas['Nome'][0], musicas['Artista'][0], musicas['Asset'][0], musicas['id'][0]),
-                    Padding(padding: EdgeInsets.only(right: 12.0)),
-                    MusicBox(musicas['Nome'][1], musicas['Artista'][1], musicas['Asset'][1], musicas['id'][1]),
-                    Padding(padding: EdgeInsets.only(right: 12.0)),
-                    MusicBox(musicas['Nome'][2], musicas['Artista'][2], musicas['Asset'][2], musicas['id'][2]),
-                    Padding(padding: EdgeInsets.only(right: 12.0)),
-                    MusicBox(musicas['Nome'][3], musicas['Artista'][3], musicas['Asset'][3], musicas['id'][3]),
-                    Padding(padding: EdgeInsets.only(right: 12.0)),
-                  ],
+              Container(
+                height: 160,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, int index) => MusicBox(musicas, index), 
+                  separatorBuilder: (context, _) => Spacer(), 
+                  itemCount: tamanho(musicas['Nome'])
                 ),
               ),
-            ],
-          ),
-      ),
+              Padding(padding: EdgeInsets.only(top: 5.0)),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: TextForHomePage("Favoritas")
+              ),
+              Padding(padding: EdgeInsets.only(top: 10.0)),
+              Container(
+                height: 200,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, int index) {
+
+                    if (tamanho(favoritas['Nome']) == 0 || tamanho(favoritas['Nome']) == null){
+                      return Text("Sem músicas favoritas! :(", style: TextStyle(color: Colors.white, fontSize: 20.0,));
+                    };
+
+                    return MusicBox(favoritas, 0);
+                  },  
+                  separatorBuilder: (context, _) => Spacer(), 
+                  itemCount: tamanho(favoritas['Nome']) == 0  ? 1 : tamanho(favoritas['Nome'])
+                ),
+              )
+            ]
+          )
+      )
     );
   }
 }

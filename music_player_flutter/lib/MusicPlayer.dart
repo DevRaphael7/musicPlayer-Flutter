@@ -8,17 +8,23 @@ class MusicPlayer extends StatefulWidget{
 
   @override 
   State createState() => new MusicPlayerState();
+
 }
 
 class MusicPlayerState extends State<MusicPlayer>{
   
   Music musica = new Music();
+  Map dicionario;
+  int indice;
+
   @override 
   Widget build(BuildContext context){
 
     Map data = ModalRoute.of(context).settings.arguments;
 
     int indice = data["indice"];
+    Map dicionario = data["dicionario"];
+    
     musica.atribuirValor(musicas, indice);
 
     return Container(
@@ -44,9 +50,7 @@ class MusicPlayerState extends State<MusicPlayer>{
             child: MaterialButton(
                     textColor: Colors.white,
                     onPressed: () { 
-                      setState((){
-                        Navigator.of(context).pushNamed("/HomePage");
-                      });
+                      Navigator.of(context).pop();
                     },
                     child: Icon(
                       Icons.arrow_back,
@@ -88,7 +92,7 @@ class MusicPlayerState extends State<MusicPlayer>{
           Padding(padding: EdgeInsets.only(top: 30.0),),
           Expanded(
             child: ButtonsControllerPlayers(musica, indice),
-            ),
+          ),
         ],
       ),
     );
