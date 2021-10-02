@@ -4,26 +4,13 @@ import 'package:music_player_flutter/widgets/Buttons.dart';
 import 'package:music_player_flutter/widgets/Text.dart';
 import 'components/Musicas.dart';
 
-class MusicPlayer extends StatefulWidget{
-
-  @override 
-  State createState() => new MusicPlayerState();
-
-}
-
-class MusicPlayerState extends State<MusicPlayer>{
+class MusicPlayer extends StatelessWidget{
   
+  final int indice;
   Music musica = new Music();
-  Map dicionario;
-  int indice;
 
   @override 
   Widget build(BuildContext context){
-
-    Map data = ModalRoute.of(context).settings.arguments;
-
-    int indice = data["indice"];
-    Map dicionario = data["dicionario"];
     
     musica.atribuirValor(musicas, indice);
 
@@ -34,8 +21,8 @@ class MusicPlayerState extends State<MusicPlayer>{
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [ 
-            Color(0xff262526),
-            Color(0xff262526)
+            Color(0xff6633cc),
+            Color(0xff5925e5)
           ]
         ),
       ),
@@ -50,7 +37,7 @@ class MusicPlayerState extends State<MusicPlayer>{
             child: MaterialButton(
                     textColor: Colors.white,
                     onPressed: () { 
-                      Navigator.of(context).pop();
+                      Navigator.pop(context);
                     },
                     child: Icon(
                       Icons.arrow_back,
@@ -84,6 +71,7 @@ class MusicPlayerState extends State<MusicPlayer>{
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(200),
                 image: DecorationImage(
+                  fit: BoxFit.cover,
                   image: AssetImage(musica.picture),
                 )
               ),
@@ -97,4 +85,6 @@ class MusicPlayerState extends State<MusicPlayer>{
       ),
     );
   }
-}
+
+  MusicPlayer({this.indice});
+} 

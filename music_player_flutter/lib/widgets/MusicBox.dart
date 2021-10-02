@@ -31,7 +31,7 @@ class MusicBox extends StatelessWidget{
                 ),
               ),
               onPressed: () {
-                function.passarParaOutraTela(context, "/MusicPlayer", indice, dicionario);
+                function.passarParaOutraTela(context, indice);
               },
             ),
           Padding(padding: EdgeInsets.only(top: 10)),

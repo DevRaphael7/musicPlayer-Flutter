@@ -12,7 +12,7 @@ class Musics extends StatefulWidget{
 class MusicsState extends State<Musics>{
 
   IconData iconeTeste = Icons.favorite_border;
-  String nomeBanner = "Joker";
+  String nomeBanner = "Rock & Roll Part 2";
 
   @override 
   Widget build(BuildContext context){
@@ -75,7 +75,7 @@ class MusicsState extends State<Musics>{
                             icon: Icon(iconeTeste, size: 40, color: Colors.white),
                             onPressed: () {
                               setState(() {
-                                List values = ["Joker", "Quadrinhos", "Gary Glitter", "assets/joker.jpg", "Howls Moving Castle.mp3"];
+                                List values = ["Rock & Roll Part 2", "Quadrinhos", "Gary Glitter", "assets/joker.jpg", "Howls Moving Castle.mp3"];
                                 adicionarAsFavoritas(favoritas, values);
                               });
                             },
@@ -116,7 +116,9 @@ class MusicsState extends State<Musics>{
                       return Text("Sem músicas favoritas! :(", style: TextStyle(color: Colors.white, fontSize: 20.0,));
                     };
 
-                    return MusicBox(favoritas, 0);
+                    print(favoritas);
+                    int indice = musicas['Nome'].indexOf(favoritas['Nome'][index]);
+                    return MusicBox(musicas, indice);
                   },  
                   separatorBuilder: (context, _) => Spacer(), 
                   itemCount: tamanho(favoritas['Nome']) == 0  ? 1 : tamanho(favoritas['Nome'])

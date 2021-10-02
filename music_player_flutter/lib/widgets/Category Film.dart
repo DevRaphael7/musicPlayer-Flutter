@@ -32,7 +32,7 @@ class CategoryFilmState extends State<CategoryFilm>{
           borderRadius: BorderRadius.circular(25),
           image: DecorationImage(
             image: AssetImage(asset),
-            scale: 1.0,
+            fit: BoxFit.cover,
             colorFilter: const ColorFilter.mode(
               Color(0xff531b53), 
               BlendMode.color
@@ -46,7 +46,7 @@ class CategoryFilmState extends State<CategoryFilm>{
             fontSize: 30.0,
             fontWeight: FontWeight.bold
           ),
-          ),
+        ),
       );
   }
 

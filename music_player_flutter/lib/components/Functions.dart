@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:music_player_flutter/MusicPlayer.dart';
 
-void passarParaOutraTela(BuildContext context, String rota, int indice, Map dicionario){
-      Navigator.pushReplacementNamed(context, rota, arguments: { 
-          "indice" : indice,
-          "dict": dicionario
-      });
+void passarParaOutraTela(BuildContext context, int indice){
+      Navigator.push(
+        context, 
+        MaterialPageRoute(
+          builder: (context) => MusicPlayer(
+            indice: indice
+          )
+        )
+      );
 }
 
 // Essa função me retirna o tamanho da lista do dicionário
